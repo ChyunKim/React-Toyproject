@@ -24,7 +24,7 @@ function App() {
     // 기존 list에 배열을 concat을 사용하여 list 추가
     const todo = list.concat(value)
 
-    // 추가된 리스트 todo를 state를 이용해 상태 변경
+    // 추가된 리스트 todo를 state를 이용하여 상태 변경
     setList(todo)
     setInput('')
   }
