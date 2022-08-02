@@ -1,0 +1,82 @@
+@font-face {
+  font-family: "Fjalla";
+  src: url("./FjallaOne-Regular.ttf")
+}
+
+.App {
+  background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+  height: 100vh;
+  padding: 100px 0 0 0;
+  margin: 0;
+}
+
+.todo-container {
+  width: 500px;
+  height: 600px;
+  background-color: white;
+  border-radius: 8px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+h1 {
+  font-family: "Fjalla";
+  font-size: 32px;
+  color: #68a5fb;
+  margin: 35px;
+}
+input {
+  width: 85%;
+  height: 40px;
+  border: none;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  margin: 0 auto 30px;
+  color: #ddd;
+  padding-left: 15px;
+  font-size: 16px;
+}
+input:focus {
+  outline-color: #68a5fb;
+  color: #68a5fb;
+}
+
+ul {
+  width: 90%;
+  height: 380px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.plusbtn {
+  color: white;
+  font-size: 30px;
+  font-family: "Fjalla";
+  width: 60px;
+  height: 60px;
+  border: none;
+  background-color: #f199a7;
+  border-radius: 50%;
+  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+  position: relative;
+  margin-top: 15px;
+}
+
+li {
+  background-color: white;
+  list-style: none;
+  border-radius: 5px;
+  text-align: left;
+  padding-left: 15px;
+  margin-bottom: 15px;
+}
+
+li input {
+  width: 21px;
+  height: 21px;
+  background-color: none;
+  vertical-align: -4px;
+  margin: 0 15px 0 0;
+}
