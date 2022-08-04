@@ -2,6 +2,10 @@
   font-family: "Fjalla";
   src: url("./FjallaOne-Regular.ttf")
 }
+body {
+  margin: 0;
+  padding: 0;
+}
 
 .App {
   background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
