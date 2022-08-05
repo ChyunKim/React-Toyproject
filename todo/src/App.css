@@ -1,17 +1,17 @@
 @font-face {
   font-family: "Fjalla";
-  src: url("./FjallaOne-Regular.ttf")
+  src: url("./font/FjallaOne-Regular.ttf")
 }
-body {
+*{
   margin: 0;
   padding: 0;
 }
-
-.App {
-  background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+body {
+  background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 90%, #e3eeff 100%);
   height: 100vh;
+}
+.App {
   padding-top: 100px;
-  margin: 0;
 }
 
 .todo-container {
@@ -32,40 +32,35 @@ h1 {
   margin: 35px;
 }
 input {
-  width: 85%;
+  width: 70%;
   height: 40px;
-  border: none;
-  border: 2px solid #ddd;
-  border-radius: 5px;
-  margin: 0 auto 30px;
+  border: 3px solid #ddd;
+  border-right: none;
   color: #ddd;
   padding-left: 15px;
   font-size: 16px;
+  margin: 0 auto 30px;
 }
 input:focus {
-  outline-color: #68a5fb;
-  color: #68a5fb;
-}
-
-ul {
-  width: 90%;
-  height: 380px;
-  margin: 0 auto;
-  padding: 0;
+  outline: none;
+  border: 3px solid #f199a7;
+  color: #f199a7;
 }
 
 .plusbtn {
   color: white;
   font-size: 30px;
   font-family: "Fjalla";
-  width: 60px;
-  height: 60px;
-  border: none;
+  width: 45px;
+  height: 46px;
+  border: 3px solid #f199a7;
   background-color: #f199a7;
-  border-radius: 50%;
-  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
-  position: relative;
-  margin-top: 15px;
+  vertical-align: top;
+}
+
+ul {
+  width: 90%;
+  margin: 0 auto;
 }
 
 li {
@@ -73,14 +68,27 @@ li {
   list-style: none;
   border-radius: 5px;
   text-align: left;
-  padding-left: 15px;
-  margin-bottom: 15px;
+  margin: 15px 22px;
+  display: flex;
+  align-items: center;
 }
 
-li input {
+.check {
   width: 21px;
   height: 21px;
   background-color: none;
-  vertical-align: -4px;
+  vertical-align: bottom;
   margin: 0 15px 0 0;
+}
+
+.list {
+  width: 100%;
+}
+
+.remove {
+  height: 20px;
+  border: none;
+  font-weight: bold;
+  vertical-align: top;
+  margin: 0;
 }
