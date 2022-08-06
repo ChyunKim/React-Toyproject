@@ -59,8 +59,9 @@ input:focus {
 }
 
 ul {
-  width: 90%;
+  height: 70%;
   margin: 0 auto;
+  overflow:auto;
 }
 
 li {
@@ -71,9 +72,10 @@ li {
   margin: 15px 22px;
   display: flex;
   align-items: center;
+  padding-left: 30px;
 }
 
-.check {
+#check {
   width: 21px;
   height: 21px;
   background-color: none;
@@ -81,14 +83,28 @@ li {
   margin: 0 15px 0 0;
 }
 
+label {
+  width: 87%;
+}
+
+input:checked +label {
+  text-decoration: line-through;
+}
+
 .list {
   width: 100%;
 }
 
 .remove {
-  height: 20px;
+  height: 25px;
   border: none;
   font-weight: bold;
   vertical-align: top;
   margin: 0;
+  background:none;
+}
+
+img {
+  width: 25px;
+  height: 25px;
 }
