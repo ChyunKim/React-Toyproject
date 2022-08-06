@@ -1,44 +1,36 @@
 import './App.css';
-import React, { useEffect } from "react";
+import React from "react";
+import TodoInput from './component/TodoInput';
+import TodoList from './component/TodoList';
 
 function App() {
-  const [input, setInput] = React.useState('')
-  const [list, setList] = React.useState([])
-  const [boolcheck, setCheck] = React.useState(false)
 
-  const ListView = () => {
-    return (
-      <ul>
-        {list.map(item => 
-            <li key = {item}><input className = "check" type = "checkbox" checked = {boolcheck}/>{item}
-            <button className='remove'></button>
-          </li>)}
-      </ul>
-    )
-  }
-
-  const eventClick = (e) => {
-      input.length === 0 &&  alert('할일을 입력하세요!')
-      input.length !== 0 && listAdd(input) || setInput('')
-  }
+  const [todo, setTodo] = React.useState([])
 
   const listAdd = (value) => {
-    // 기존 list에 배열을 concat을 사용하여 list 추가
-    const todo = list.concat(value)
-    setList(todo)
+         // 기존 list에 배열을 concat을 사용하여 list 추가    
+        if ( !(todo.indexOf(value))) {
+            alert('이미 추가된 리스트입니다!') 
+        }else {
+            const li = todo.concat(value)
+            setTodo(li)
+        }
   }
 
+  const remove = (value) => {
+        setTodo(value)
+  }
 
   return (
-    <div className = "App">
-      <div className ="todo-container">
-        <h1>TODO List</h1>
-        <input value = {input} type = "text" onChange={(e)=>setInput(e.target.value)} />
-        <button className="plusbtn" onClick={eventClick}>+</button>
-        <ListView />
-      </div>
-    </div>
-  );
+        <div className = "App">
+            <div className ="todo-container">
+                <h1>TODO List</h1>
+                <TodoInput listAdd={listAdd} todo = {todo} /> 
+                <TodoList todo = {todo} remove={remove}/>         
+            </div>
+        </div>
+  )
+
 }
 
 export default App;
