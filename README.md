@@ -1,5 +1,4 @@
 # React-Toyproject
 
 ## Todo List App
-![todolist](https://user-images.githubusercontent.com/53160685/183259311-3c3abd15-9174-411f-946c-e1f1a03c3a21.gif)
-<br>
+![todo-lsit](https://user-images.githubusercontent.com/53160685/184476199-ad4a0b46-39de-4d61-8bf2-54e3ba9e2d39.gif)<br>
