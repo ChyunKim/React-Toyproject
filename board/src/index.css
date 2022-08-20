@@ -1,0 +1,19 @@
+@font-face {
+  font-family: "NanumGothic";
+  src: url("./font/NanumGothic-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Rajdhani";
+  src: url("./font/Rajdhani-Regular.ttf");
+}
+
+* {
+  margin: 0;
+}
+
+body {
+  background-color: #f6f6f6;
+  padding: 0 150px;
+  font-family: "NanumGothic";
+}
