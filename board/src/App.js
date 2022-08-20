@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Nav from "./components/Nav";
 import Write from "./components/Write";
 import Setting from "./components/Setting";
+import Post from "./components/Post";
 
 const PostBtn = styled.button`
   width: 100px;
@@ -20,6 +21,7 @@ const Board = () => {
       <Link to="/write">
         <PostBtn>작성</PostBtn>
       </Link>
+      <Post header="게시글" />
     </>
   );
 };
