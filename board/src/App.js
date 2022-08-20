@@ -1,8 +1,10 @@
-import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
-import styled from "styled-components";
-import Nav from "./components/Nav";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Write from "./components/Write";
+import View from "./components/View";
 import Setting from "./components/Setting";
+import Nav from "./components/Nav";
+import styled from "styled-components";
 import Post from "./components/Post";
 
 const PostBtn = styled.button`
@@ -25,16 +27,17 @@ const Board = () => {
     </>
   );
 };
-const App = () => {
+
+function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Board />} />
         <Route path="/write" element={<Write />} />
+        <Route path="/view/:id" element={<View />} />
         <Route path="/setting" element={<Setting />} />
       </Routes>
     </BrowserRouter>
   );
-};
-
+}
 export default App;
