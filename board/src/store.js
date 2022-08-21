@@ -39,6 +39,18 @@ const POST = [
   },
 ];
 
+let now = new Date();
+let year = now.getFullYear();
+let month = now.getMonth() + 1;
+let day = now.getDate();
+let hours = now.getHours();
+let minutes = now.getMinutes();
+
+month = month < 10 ? `0${month}` : { month };
+
+let date = `${year}.${month}.${day}`;
+let hour = `${hours}:${minutes}`;
+
 const postreducer = (state = POST, action) => {
   switch (action.type) {
     case "UPLOAD":
@@ -46,9 +58,24 @@ const postreducer = (state = POST, action) => {
         id: action.id,
         title: action.title,
         content: action.content,
-        date: action.date,
-        hour: action.hour,
+        date: date,
+        hour: hour,
       }));
+    case "MODIFY":
+      return state
+        .filter((ele) => ele.id.toString() !== action.id)
+        .concat([
+          {
+            id: action.id,
+            title: action.title,
+            content: action.content,
+            date: date,
+            hour: hour,
+          },
+        ]);
+    case "DELETE":
+      return state.filter((ele) => ele.id.toString() !== action.id);
+
     default:
       return state;
   }
