@@ -34,6 +34,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Board />} />
         <Route path="/write" element={<Write />} />
+        <Route path="/write/:id" element={<Write />} />
         <Route path="/view/:id" element={<View />} />
         <Route path="/setting" element={<Setting />} />
       </Routes>
