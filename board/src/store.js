@@ -1,4 +1,4 @@
-import { createStore } from "redux";
+import { combineReducers, createStore } from "redux";
 
 const POST = [
   {
@@ -39,6 +39,11 @@ const POST = [
   },
 ];
 
+const SETCOLOR = {
+  font: "black",
+  skin: "#f6f6f6",
+};
+
 let now = new Date();
 let year = now.getFullYear();
 let month = now.getMonth() + 1;
@@ -54,13 +59,17 @@ let hour = `${hours}:${minutes}`;
 const postreducer = (state = POST, action) => {
   switch (action.type) {
     case "UPLOAD":
-      return (state = state.concat({
-        id: action.id,
-        title: action.title,
-        content: action.content,
-        date: date,
-        hour: hour,
-      }));
+      return (state = [
+        ...state,
+        {
+          id: action.id,
+          title: action.title,
+          content: action.title,
+          date: date,
+          hour: hour,
+        },
+      ]);
+
     case "MODIFY":
       return state
         .filter((ele) => ele.id.toString() !== action.id)
@@ -75,12 +84,32 @@ const postreducer = (state = POST, action) => {
         ]);
     case "DELETE":
       return state.filter((ele) => ele.id.toString() !== action.id);
-
     default:
       return state;
   }
 };
 
-const store = createStore(postreducer);
+const setreducer = (state = SETCOLOR, action) => {
+  switch (action.type) {
+    case "FONT-CHANGE":
+      return {
+        ...state,
+        font: action.font,
+      };
+    case "SKIN-CHANGE":
+      return {
+        ...state,
+        skin: action.skin,
+      };
+    default:
+      return state;
+  }
+};
+const store = createStore(
+  combineReducers({
+    post: postreducer,
+    setting: setreducer,
+  })
+);
 
 export default store;
