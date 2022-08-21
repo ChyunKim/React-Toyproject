@@ -1,6 +1,6 @@
 import Nav from "./Nav";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import styled from "styled-components";
 
 const ViewContainer = styled.div`
@@ -31,9 +31,16 @@ const Btn = styled.button`
 
 const View = () => {
   const params = useParams();
-  const postcon = useSelector((state) => state);
+  const post = useSelector((state) => state);
+  const dispatch = useDispatch();
 
-  const viewdetail = postcon.map((ele) => {
+  const eventDelete = () => {
+    dispatch({
+      type: "DELETE",
+      id: params.id,
+    });
+  };
+  const viewdetail = post.map((ele) => {
     if (params.id === ele.id.toString()) {
       return (
         <ViewContainer key={ele.id}>
@@ -41,8 +48,14 @@ const View = () => {
           <ViewContent>{ele.content}</ViewContent>
           <strong>등록일자 :</strong> {ele.date} <strong>시간 </strong>
           {ele.hour}
-          <Btn rightmargin="0">삭제</Btn>
-          <Btn rightmargin="10px">수정 </Btn>
+          <Link to="/">
+            <Btn rightmargin="0" onClick={eventDelete}>
+              삭제
+            </Btn>
+          </Link>
+          <Link to={`/write/${params.id}`}>
+            <Btn rightmargin="10px">수정 </Btn>
+          </Link>
         </ViewContainer>
       );
     }
