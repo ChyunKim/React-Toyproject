@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const HeaderDiv = styled.div`
   height: 40px;
@@ -8,6 +9,8 @@ const HeaderDiv = styled.div`
   border-bottom: 1px solid #ddd;
   display: flex;
   align-items: center;
+  color: ${(props) => props.font};
+  background-color: ${(props) => props.skin};
 `;
 
 const NavList = styled.div`
@@ -26,9 +29,11 @@ const ListItem = styled.li`
 `;
 
 const Nav = () => {
+  const setting = useSelector((state) => state.setting);
+
   return (
     <>
-      <HeaderDiv>
+      <HeaderDiv font={setting.font} skin={setting.skin}>
         <h1>BLOG</h1>
         <NavList>
           <Link to="/">
