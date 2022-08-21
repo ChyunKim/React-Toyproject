@@ -64,7 +64,7 @@ const postreducer = (state = POST, action) => {
         {
           id: action.id,
           title: action.title,
-          content: action.title,
+          content: action.content,
           date: date,
           hour: hour,
         },
