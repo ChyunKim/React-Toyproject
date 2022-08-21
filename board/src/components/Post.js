@@ -22,11 +22,11 @@ const ListItem = styled.li`
 
 const Post = (props) => {
   const [post, setPost] = useState([]);
-  const list = useSelector((state) => state);
-
+  const list = useSelector((state) => state.post);
+  console.log(list);
   useEffect(() => {
     setPost(list);
-  }, [list]);
+  }, []);
 
   const postList = post.map((ele) => {
     return (

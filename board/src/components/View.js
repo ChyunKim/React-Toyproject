@@ -31,7 +31,7 @@ const Btn = styled.button`
 
 const View = () => {
   const params = useParams();
-  const post = useSelector((state) => state);
+  const post = useSelector((state) => state.post);
   const dispatch = useDispatch();
 
   const eventDelete = () => {

@@ -44,8 +44,8 @@ const Content = styled.textarea`
 
 const Write = () => {
   const dispatch = useDispatch();
-  const id = useSelector((state) => state.map((ele) => ele.id));
-  const post = useSelector((state) => state);
+  const id = useSelector((state) => state.post.map((ele) => ele.id));
+  const post = useSelector((state) => state.post);
   const params = useParams();
 
   const [input, setInput] = useState({
@@ -82,7 +82,7 @@ const Write = () => {
       if (!params.id) {
         dispatch({
           type: "UPLOAD",
-          id: id[id.length - 1] + 1,
+          id: Number(id[id.length - 1]) + 1,
           title: title,
           content: content,
         });
