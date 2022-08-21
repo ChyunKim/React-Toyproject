@@ -1,8 +1,8 @@
 import Nav from "./Nav";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 
 const WriteContainer = styled.div`
@@ -45,6 +45,8 @@ const Content = styled.textarea`
 const Write = () => {
   const dispatch = useDispatch();
   const id = useSelector((state) => state.map((ele) => ele.id));
+  const post = useSelector((state) => state);
+  const params = useParams();
 
   const [input, setInput] = useState({
     title: "",
@@ -62,28 +64,36 @@ const Write = () => {
     });
   };
 
+  useEffect(() => {
+    if (params.id) {
+      post.forEach((ele) => {
+        if (params.id === ele.id.toString()) {
+          setInput({
+            title: ele.title,
+            content: ele.content,
+          });
+        }
+      });
+    }
+  }, []);
+
   const eventUpload = (e) => {
     if (title && content) {
-      let now = new Date();
-      let year = now.getFullYear();
-      let month = now.getMonth() + 1;
-      let day = now.getDate();
-      let hours = now.getHours();
-      let minutes = now.getMinutes();
-
-      month = month < 10 ? `0${month}` : { month };
-
-      let date = `${year}.${month}.${day}`;
-      let hour = `${hours}:${minutes}`;
-
-      dispatch({
-        type: "UPLOAD",
-        id: id[id.length - 1] + 1,
-        title: title,
-        content: content,
-        date: date,
-        hour: hour,
-      });
+      if (!params.id) {
+        dispatch({
+          type: "UPLOAD",
+          id: id[id.length - 1] + 1,
+          title: title,
+          content: content,
+        });
+      } else {
+        dispatch({
+          type: "MODIFY",
+          id: params.id,
+          title: title,
+          content: content,
+        });
+      }
     } else {
       e.preventDefault();
       title || alert("게시글 제목은 필수!");
@@ -101,14 +111,14 @@ const Write = () => {
             name="title"
             type="text"
             onChange={eventInput}
-          />
+          ></TitleInput>
         </Titlewrap>
         <Content
           value={content}
           name="content"
           placeholder="게시글 내용 작성"
           onChange={eventInput}
-        />
+        ></Content>
         <Link to="/">
           <UploadBtn onClick={eventUpload}>등록</UploadBtn>
         </Link>
