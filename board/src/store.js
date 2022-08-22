@@ -1,4 +1,6 @@
 import { combineReducers, createStore } from "redux";
+import { persistReducer, persistStore } from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
 const POST = [
   {
@@ -105,11 +107,19 @@ const setreducer = (state = SETCOLOR, action) => {
       return state;
   }
 };
-const store = createStore(
-  combineReducers({
-    post: postreducer,
-    setting: setreducer,
-  })
-);
+const persistConfig = {
+  key: "root",
+  storage,
+};
+
+const blogReducer = combineReducers({
+  post: postreducer,
+  setting: setreducer,
+});
+
+const persistedReducer = persistReducer(persistConfig, blogReducer);
+
+const store = createStore(persistedReducer);
 
 export default store;
+export const persistor = persistStore(store);
