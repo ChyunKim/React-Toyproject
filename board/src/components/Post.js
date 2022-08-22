@@ -23,19 +23,34 @@ const ListItem = styled.li`
 const Post = (props) => {
   const [post, setPost] = useState([]);
   const list = useSelector((state) => state.post);
-  console.log(list);
+
   useEffect(() => {
     setPost(list);
-  }, []);
+  }, [post]);
 
   const postList = post.map((ele) => {
-    return (
-      <Link to={`/view/${ele.id}`} key={ele.id}>
-        <ListItem>
-          {ele.date} || {ele.title}
-        </ListItem>
-      </Link>
-    );
+    if (!props.search) {
+      return (
+        <Link to={`/view/${ele.id}`} key={ele.id}>
+          <ListItem>
+            {ele.date} || {ele.title}
+          </ListItem>
+        </Link>
+      );
+    } else {
+      if (
+        ele.title.includes(props.search) ||
+        ele.content.includes(props.search)
+      ) {
+        return (
+          <Link to={`/view/${ele.id}`} key={ele.id}>
+            <ListItem>
+              {ele.date} || {ele.title}
+            </ListItem>
+          </Link>
+        );
+      }
+    }
   });
   return (
     <ListContainer>
