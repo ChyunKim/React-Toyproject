@@ -6,24 +6,41 @@ import Setting from "./components/Setting";
 import Nav from "./components/Nav";
 import styled from "styled-components";
 import Post from "./components/Post";
+import { useState } from "react";
 
 const PostBtn = styled.button`
   width: 100px;
   height: 40px;
   float: right;
-  margin: 60px 70px;
+  margin: 60px 50px;
   border: none;
   font-family: "NanumGothic-Bold";
 `;
 
+const SearchBox = styled.div`
+  width: 90%;
+  height: 30px;
+  margin: 30px auto;
+`;
+
 const Board = () => {
+  const [search, setSearch] = useState("");
+  const eventInput = (e) => {
+    setTimeout(() => {
+      setSearch(e.target.value);
+    }, 1000);
+  };
+
   return (
     <>
       <Nav />
+      <SearchBox>
+        <input type="text" placeholder="게시글 조회" onChange={eventInput} />
+      </SearchBox>
       <Link to="/write">
         <PostBtn>작성</PostBtn>
       </Link>
-      <Post header="게시글" />
+      <Post header="게시글" search={search} />
     </>
   );
 };
