@@ -1,7 +1,7 @@
 # React-Toyproject
 
 ## Board 게시판 블로그
-![boardgif](https://user-images.githubusercontent.com/53160685/185780978-f08f535e-4b35-47a2-9e3e-fe1746bb04d3.gif)<br>
+![boardgif](https://user-images.githubusercontent.com/53160685/186066904-de6982bf-cbbf-40bc-a558-a133ea188fce.gif)
 
 
 ## Todo List App
